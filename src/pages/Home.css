@@ -1,19 +1,46 @@
-.home{font-family: 'Barlow', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; padding: 16px 16px 32px}
-.hero{display:flex; align-items:center; justify-content:space-between; gap:24px; padding:28px; background:linear-gradient(180deg,#fff8e1,#fff); border-radius:16px; border:1px solid #f3e7b3}
-.hero__content .brand{font-family:'Satisfy', cursive; font-size:44px; margin:0}
-.hero__content .tagline{margin:8px 0 18px; color:#555}
-.cta{display:inline-block; background:#FDC913; color:#000; padding:10px 18px; border-radius:10px; font-weight:700; transition:transform .08s ease, background .15s ease}
-.cta:hover{background:#e0b90f; transform:translateY(-1px)}
-.hero__image img{max-width:300px; height:auto}
-.features{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:36px 0}
-.card{background:#fff; border:1px solid #eee; border-radius:12px; padding:18px; text-align:center; box-shadow:0 6px 16px rgba(0,0,0,.04)}
-.card h3{margin:12px 0 6px}
-.card p{margin:0; color:#666}
-.card img{max-width:100%; height:120px; object-fit:contain}
-.gallery{display:grid; grid-template-columns:repeat(6,1fr); gap:10px}
-.gallery img{width:100%; height:100px; object-fit:cover; border-radius:8px}
-@media (max-width: 768px){
-  .hero{flex-direction:column; text-align:center}
-  .features{grid-template-columns:1fr}
-  .gallery{grid-template-columns:repeat(3,1fr)}
+.home{font-family: 'Barlow', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; padding: 0 0 32px}
+
+/* HERO BANNER */
+.hero-banner{background:#CE2829; color:#fff; position:relative;}
+.hero-banner .hero-inner{padding:40px 0 120px; text-align:center; position:relative; overflow:hidden}
+.site-brand{font-family:'Satisfy', cursive; font-size:44px; margin:0}
+.hero-sub{font-family:'Satisfy', cursive; color:#ffe3a0; margin:8px 0 0}
+.hero-title{font-family:'Quattrocento', serif; font-weight:700; font-size:40px; letter-spacing:.4px; margin:8px 0 16px}
+.btn-primary{display:inline-block; background:#FDC913; color:#000; padding:10px 20px; border-radius:10px; font-weight:800}
+.hero-pizza{position:absolute; left:50%; transform:translateX(-50%); bottom:-60px; width:560px; max-width:90%;}
+.categories-bar{background:#fff; border-radius:14px; box-shadow:0 10px 30px rgba(0,0,0,.08); margin:-40px auto 32px; width:min(980px, 100% - 32px)}
+.categories-bar ul{display:flex; gap:24px; padding:12px 16px; margin:0; overflow:auto; list-style:none; align-items:center; justify-content:center}
+.categories-bar li{display:flex; align-items:center; gap:10px; white-space:nowrap; color:#333}
+.categories-bar img{height:22px}
+
+/* PROMOS */
+.promos{display:grid; grid-template-columns:2fr 1fr; gap:18px; margin:36px 0}
+.promo{position:relative; background:#fff; border:1px solid #eee; border-radius:14px; overflow:hidden; min-height:180px}
+.promo-large{background:#F9E6E6}
+.promo-dark{background:#2b2b2b; color:#fff}
+.promo-warm{background:#FFF1D6}
+.promo img{position:absolute; right:0; bottom:0; height:100%; object-fit:contain}
+.promo .promo-content{padding:18px}
+.promo .btn-ghost{display:inline-block; margin-top:10px; background:#fff; color:#111; padding:8px 12px; border-radius:8px; font-weight:700}
+
+/* POPULAR */
+.popular{margin:28px 0}
+.section-kicker{font-family:'Satisfy', cursive; color:#CE2829; text-align:center; margin:0 0 8px}
+.section-title{text-align:center; margin:0 0 18px}
+.chips{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:18px}
+.chip{background:#fff; border:1px solid #eee; padding:8px 12px; border-radius:999px; color:#333}
+.chip.active{background:#111; color:#fff; border-color:#111}
+.products{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.product{background:#fff; border:1px solid #eee; border-radius:12px; padding:12px; text-align:center; box-shadow:0 8px 18px rgba(0,0,0,.04)}
+.product img{height:140px; object-fit:contain}
+.product h4{margin:10px 0 6px}
+.product .meta{display:flex; justify-content:space-between; align-items:center; color:#666}
+.product .meta strong{color:#111}
+
+@media (max-width: 900px){
+  .promos{grid-template-columns:1fr}
+  .products{grid-template-columns:1fr 1fr}
+}
+@media (max-width: 600px){
+  .products{grid-template-columns:1fr}
 }
