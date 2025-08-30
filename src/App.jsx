@@ -4,6 +4,7 @@ import './App.css'
 import Home from './pages/Home'
 import Order from './pages/Order'
 import Success from './pages/Success'
+import Footer from './components/common/Footer'
 
 function App() {
   // IT2: Prop-lifting ile Success sayfasına veri taşı
@@ -22,7 +23,7 @@ function App() {
           <Success order={orderResult} />
         </Route>
      </Switch>
-      
+     <Footer />
     </>
   )
 }
