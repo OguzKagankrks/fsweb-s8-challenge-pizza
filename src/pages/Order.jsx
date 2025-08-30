@@ -100,6 +100,7 @@ function Order({ onSubmitSuccess }) {
 
   return (
     <main className="order-page">
+      <div className="container">
       <h1 className="page-title">Sipariş Oluştur</h1>
 
       <form onSubmit={handleSubmit} className="form-grid">
@@ -147,6 +148,7 @@ function Order({ onSubmitSuccess }) {
           />
         </div>
       </form>
+      </div>
     </main>
   )
 }

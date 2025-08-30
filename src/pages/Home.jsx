@@ -4,6 +4,7 @@ import './Home.css'
 function Home() {
   return (
     <main className='home'>
+      <div className='container'>
       <header className='hero'>
         <div className='hero__content'>
           <h1 className='brand'>Teknolojik Yemekler</h1>
@@ -41,9 +42,9 @@ function Home() {
         <img src='/images/iteration-2-images/footer/insta/li-4.png' alt='Galeri 5' />
         <img src='/images/iteration-2-images/footer/insta/li-5.png' alt='Galeri 6' />
       </section>
+      </div>
     </main>
   )
 }
 
 export default Home
-

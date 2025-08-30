@@ -15,6 +15,7 @@ export default function Success({ order }) {
 
   return (
     <main className="success-page">
+      <div className="container">
       <section className="success-card">
         <h1 className="title">Tebrikler!</h1>
         <p className="subtitle">Siparisiniz alindi</p>
@@ -41,7 +42,7 @@ export default function Success({ order }) {
           <div className="loading">Yonlendiriliyor...</div>
         )}
       </section>
+      </div>
     </main>
   )
 }
-
