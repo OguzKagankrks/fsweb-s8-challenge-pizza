@@ -7,6 +7,7 @@ import ToppingsSelector from '../components/order/ToppingsSelector'
 import NotesField from '../components/order/NotesField'
 import DoughOptions from '../components/order/DoughOptions'
 import SummaryBox from '../components/order/SummaryBox'
+import './Order.css'
 
 const initialMalzemeler = {
   pepperoni: false,
@@ -90,29 +91,37 @@ function Order({ onSubmitSuccess }) {
   }
 
   return (
-    <main>
-      <div>
-        <h1 className="title">Sipariş Formu</h1>
-      </div>
+    <main className="order-page">
+      <h1 className="page-title">Sipariş Oluştur</h1>
 
-      <form onSubmit={handleSubmit}>
-        <NameField value={isim} onChange={setIsim} error={nameError} />
+      <form onSubmit={handleSubmit} className="form-grid">
+        <div className="form-area">
+          <NameField value={isim} onChange={setIsim} error={nameError} />
 
-        <SizeSelector value={boyut} onChange={setBoyut} />
+          <fieldset className="section">
+            <SizeSelector value={boyut} onChange={setBoyut} />
+          </fieldset>
 
-        <DoughOptions value={hamur} onChange={setHamur} />
+          <fieldset className="section">
+            <DoughOptions value={hamur} onChange={setHamur} />
+          </fieldset>
 
-        <ToppingsSelector
-          toppings={malzemeler}
-          onToggle={handleToggleTopping}
-          min={4}
-          max={10}
-          error={toppingsError}
-        />
+          <fieldset className="section">
+            <ToppingsSelector
+              toppings={malzemeler}
+              onToggle={handleToggleTopping}
+              min={4}
+              max={10}
+              error={toppingsError}
+            />
+          </fieldset>
 
-        <NotesField value={not} onChange={setNot} />
+          <div className="section">
+            <NotesField value={not} onChange={setNot} />
+          </div>
+        </div>
 
-        <div style={{ marginTop: 16 }}>
+        <div className="summary-area">
           <SummaryBox
             basePrice={BASE_PRICE}
             toppingsCount={toppingsCount}
@@ -129,3 +138,4 @@ function Order({ onSubmitSuccess }) {
 }
 
 export default Order
+

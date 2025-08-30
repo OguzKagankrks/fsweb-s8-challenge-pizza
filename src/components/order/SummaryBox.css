@@ -1,0 +1,40 @@
+.summary-box {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 360px;
+  background: #fff;
+}
+.summary-title {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+.summary-box .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+.summary-box .row + .row { border-top: 1px dashed #eee; }
+.summary-box .row.total {
+  margin-top: 8px;
+  border-top: 1px solid #000;
+  font-size: 18px;
+}
+.summary-box .error {
+  color: crimson;
+  font-size: 12px;
+  margin-top: 8px;
+}
+.summary-box .submit {
+  width: 100%;
+  margin-top: 12px;
+  background: #FDC913;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 700;
+}
+.summary-box .submit:disabled { opacity: 0.6; cursor: not-allowed; }
+

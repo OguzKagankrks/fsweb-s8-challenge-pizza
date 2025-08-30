@@ -1,0 +1,24 @@
+.order-page { padding: 16px; }
+.order-page .page-title { font-size: 28px; margin: 0 0 16px; }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+.form-area .section { margin: 16px 0; border: none; padding: 0; }
+.form-area .name-field { margin-bottom: 12px; text-align: left; }
+.form-area label { display: block; margin-bottom: 6px; font-weight: 600; }
+.form-area input[type="text"],
+.form-area textarea,
+.form-area select { width: 100%; box-sizing: border-box; }
+
+.summary-area { position: sticky; top: 16px; }
+
+@media (max-width: 900px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .summary-area { position: static; }
+}
+
