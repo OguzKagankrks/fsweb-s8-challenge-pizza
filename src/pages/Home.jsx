@@ -8,7 +8,7 @@ function Home() {
         <div className='hero__content'>
           <h1 className='brand'>Teknolojik Yemekler</h1>
           <p className='tagline'>Ac misin? En hizlisi burada.</p>
-          <Link className='cta' to='/form'>Sipariþ Oluþtur</Link>
+          <Link className='cta' to='/form'>Siparis Olustur</Link>
         </div>
         <div className='hero__image' aria-hidden>
           <img src='/images/iteration-2-images/pictures/food-1.png' alt='Lezzetli pizza' />
@@ -18,18 +18,18 @@ function Home() {
       <section className='features'>
         <article className='card'>
           <img src='/images/iteration-2-images/cta/kart-1.png' alt='Hizli teslimat' />
-          <h3>Hýzlý Teslimat</h3>
-          <p>Sipariþlerin rekor sürede kapýnda.</p>
+          <h3>Hizli Teslimat</h3>
+          <p>Siparislerin rekor surede kapinda.</p>
         </article>
         <article className='card'>
           <img src='/images/iteration-2-images/cta/kart-2.png' alt='Taptaze malzemeler' />
           <h3>Taptaze</h3>
-          <p>Her gün taze malzemelerle hazýrlanýr.</p>
+          <p>Her gun taze malzemelerle hazirlanir.</p>
         </article>
         <article className='card'>
-          <img src='/images/iteration-2-images/cta/kart-3.png' alt='Zengin seçenek' />
-          <h3>Bol Seçenek</h3>
-          <p>Her damak tadýna uygun kombinler.</p>
+          <img src='/images/iteration-2-images/cta/kart-3.png' alt='Zengin secenek' />
+          <h3>Bol Secenek</h3>
+          <p>Her damak tadina uygun kombinler.</p>
         </article>
       </section>
 
@@ -46,3 +46,4 @@ function Home() {
 }
 
 export default Home
+

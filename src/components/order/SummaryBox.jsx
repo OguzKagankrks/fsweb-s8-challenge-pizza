@@ -18,7 +18,7 @@ export default function SummaryBox({
   const fmt = (n) => (Number.isFinite(n) ? n.toFixed(2) : '0.00')
 
   return (
-    <aside className="summary-box">
+    <aside className="summary-box" data-testid="summary">
       <h3 className="summary-title">Sipariş Toplamı</h3>
 
       <div className="row">
@@ -46,18 +46,18 @@ export default function SummaryBox({
         <strong>{fmt(toppingsCost || (toppingsCount * toppingPrice))}₺</strong>
       </div>
 
-      <div className="row total">
+      <div className="row total" data-testid="total-row">
         <span>Toplam</span>
-        <strong>{fmt(total)}₺</strong>
+        <strong data-testid="total-amount">{fmt(total)}₺</strong>
       </div>
 
       {submitError && (
-        <div className="error" role="alert">
+        <div className="error" role="alert" data-testid="submit-error">
           {submitError}
         </div>
       )}
 
-      <button type="submit" className="submit" disabled={!canSubmit || submitting}>
+      <button type="submit" className="submit" disabled={!canSubmit || submitting} data-testid="submit-button">
         {submitting ? 'Gönderiliyor...' : 'SİPARİŞ VER'}
       </button>
     </aside>

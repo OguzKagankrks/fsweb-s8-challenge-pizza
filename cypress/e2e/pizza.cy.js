@@ -41,3 +41,54 @@ describe('Pizza Order Form - IT1', () => {
   })
 })
 
+describe('Pizza Order Form - IT2 extras', () => {
+  it('enforces max 10 toppings (11th disabled)', () => {
+    cy.visit('/#/form')
+    cy.get('input[name="isim"]').type('Limit Test')
+    cy.get('input[type="radio"][name="boyut"][value="Kucuk"]').check({ force: true })
+
+    const ten = ['pepperoni','sosis','sucuk','domates','biber','misir','zeytin','mantar','ananas','sogan']
+    ten.forEach((k) => {
+      cy.get(`input[type="checkbox"][name="${k}"]`).check({ force: true }).should('be.checked')
+    })
+
+    // 11th should be disabled
+    cy.get('input[type="checkbox"][name="sarimsak"]').should('be.disabled')
+  })
+
+  it('shows error message on failed POST and stays on form', () => {
+    cy.intercept('POST', 'https://reqres.in/api/pizza', { forceNetworkError: true }).as('postPizzaFail')
+    cy.visit('/#/form')
+
+    cy.get('input[name="isim"]').type('Hata Test')
+    cy.get('input[type="radio"][name="boyut"][value="Kucuk"]').check({ force: true })
+    ;['pepperoni','sosis','sucuk','domates'].forEach((k) => {
+      cy.get(`input[type="checkbox"][name="${k}"]`).check({ force: true })
+    })
+
+    cy.get('[data-testid="submit-button"]').click()
+    cy.wait('@postPizzaFail')
+    cy.get('[data-testid="submit-error"]').should('exist')
+    cy.url().should('include', '/#/form')
+  })
+
+  it('navigates to success and shows summary', () => {
+    cy.intercept('POST', 'https://reqres.in/api/pizza', {
+      statusCode: 201,
+      body: { id: 'ok-1', createdAt: '2025-01-01T00:00:00.000Z' },
+    }).as('postPizzaOk2')
+
+    cy.visit('/#/form')
+    cy.get('input[name="isim"]').type('Ayşe Başarılı')
+    cy.get('input[type="radio"][name="boyut"][value="Kucuk"]').check({ force: true })
+    ;['pepperoni','sosis','sucuk','domates'].forEach((k) => {
+      cy.get(`input[type="checkbox"][name="${k}"]`).check({ force: true })
+    })
+
+    cy.get('[data-testid="submit-button"]').click()
+    cy.wait('@postPizzaOk2')
+    cy.url().should('include', '/#/success')
+    cy.contains('Siparişiniz Alındı').should('exist')
+    cy.contains('Ayşe Başarılı').should('exist')
+  })
+})
