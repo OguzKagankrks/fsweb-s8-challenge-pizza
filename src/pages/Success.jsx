@@ -24,6 +24,11 @@ export default function Success({ order }) {
       <section className="success-card">
         <h1 className="title">Tebrikler!</h1>
         <p className="subtitle">Siparisiniz alindi</p>
+        {data?.offline && (
+          <div className="meta" role="status" aria-live="polite" style={{marginTop:8, color:'#d97706'}}>
+            Not: Ağ hatası nedeniyle çevrimdışı onaylandı.
+          </div>
+        )}
 
         {payload ? (
           <div className="summary">
