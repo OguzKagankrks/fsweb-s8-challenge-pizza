@@ -51,8 +51,16 @@ function Order({ onSubmitSuccess }) {
   // pricing
   const BASE_PRICE = 85.5
   const TOPPING_PRICE = 5
+  const SIZE_MULTIPLIERS = { Kucuk: 1, Orta: 1.2, Buyuk: 1.5 }
+  const DOUGH_MULTIPLIERS = { Ince: 1, Orta: 1.05, Kalin: 1.1 }
+  const SIZE_LABELS = { Kucuk: 'Küçük', Orta: 'Orta', Buyuk: 'Büyük' }
+  const DOUGH_LABELS = { Ince: 'İnce', Orta: 'Orta', Kalin: 'Kalın' }
+
+  const sizeMultiplier = SIZE_MULTIPLIERS[boyut] || 1
+  const doughMultiplier = DOUGH_MULTIPLIERS[hamur] || 1
+  const baseSubtotal = BASE_PRICE * sizeMultiplier * doughMultiplier
   const toppingsCost = toppingsCount * TOPPING_PRICE
-  const total = BASE_PRICE + toppingsCost
+  const total = baseSubtotal + toppingsCost
 
   function handleToggleTopping(key, checked) {
     setMalzemeler((prev) => ({ ...prev, [key]: checked }))
@@ -124,8 +132,14 @@ function Order({ onSubmitSuccess }) {
         <div className="summary-area">
           <SummaryBox
             basePrice={BASE_PRICE}
+            sizeLabel={SIZE_LABELS[boyut]}
+            sizeMultiplier={sizeMultiplier}
+            doughLabel={DOUGH_LABELS[hamur]}
+            doughMultiplier={doughMultiplier}
+            baseSubtotal={baseSubtotal}
             toppingsCount={toppingsCount}
             toppingPrice={TOPPING_PRICE}
+            toppingsCost={toppingsCost}
             total={total}
             submitting={submitting}
             canSubmit={canSubmit}
@@ -138,4 +152,3 @@ function Order({ onSubmitSuccess }) {
 }
 
 export default Order
-

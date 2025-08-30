@@ -15,6 +15,7 @@
   justify-content: space-between;
   padding: 8px 0;
 }
+.summary-box .row.muted { color: #666; font-size: 13px; padding: 4px 0; }
 .summary-box .row + .row { border-top: 1px dashed #eee; }
 .summary-box .row.total {
   margin-top: 8px;
@@ -37,4 +38,3 @@
   font-weight: 700;
 }
 .summary-box .submit:disabled { opacity: 0.6; cursor: not-allowed; }
-
