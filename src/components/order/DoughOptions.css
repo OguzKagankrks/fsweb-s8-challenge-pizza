@@ -1,0 +1,17 @@
+/* Select style harmonized with inputs */
+.dough-options { text-align: left; }
+.dough-options label { display: block; margin-bottom: 6px; font-weight: 600; }
+.dough-options select {
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.dough-options select:focus {
+  border-color: #FDC913;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(253, 201, 19, 0.25);
+}

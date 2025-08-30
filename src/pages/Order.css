@@ -22,3 +22,37 @@
   .summary-area { position: static; }
 }
 
+/* Inputs visual design */
+.form-area input[type="text"],
+.form-area textarea,
+.form-area select {
+  border: 1px solid #e0e0e0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+  font-size: 14px;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.form-area input::placeholder,
+.form-area textarea::placeholder { color: #9aa0a6; }
+.form-area input:focus,
+.form-area textarea:focus,
+.form-area select:focus {
+  border-color: #FDC913;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(253, 201, 19, 0.25);
+}
+.form-area textarea { min-height: 96px; resize: vertical; }
+.form-area select { height: 40px; }
+
+/* Fieldset legends */
+.form-area fieldset > legend {
+  font-weight: 700;
+  font-size: 14px;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+/* Inline error */
+.form-area .error { font-size: 12px; color: #c62828; margin-top: 6px; display: inline-block; }
