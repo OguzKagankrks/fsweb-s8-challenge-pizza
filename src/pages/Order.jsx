@@ -5,6 +5,8 @@ import NameField from '../components/order/NameField'
 import SizeSelector from '../components/order/SizeSelector'
 import ToppingsSelector from '../components/order/ToppingsSelector'
 import NotesField from '../components/order/NotesField'
+import DoughOptions from '../components/order/DoughOptions'
+import SummaryBox from '../components/order/SummaryBox'
 
 const initialMalzemeler = {
   pepperoni: false,
@@ -26,9 +28,11 @@ function Order({ onSubmitSuccess }) {
 
   const [isim, setIsim] = useState('')
   const [boyut, setBoyut] = useState('')
+  const [hamur, setHamur] = useState('')
   const [malzemeler, setMalzemeler] = useState(initialMalzemeler)
   const [not, setNot] = useState('')
   const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
   const isimValid = isim.trim().length >= 3
   const nameError = isim && !isimValid ? 'En az 3 karakter girin' : ''
@@ -43,6 +47,12 @@ function Order({ onSubmitSuccess }) {
     : ''
   const canSubmit = isimValid && sizeValid && toppingsValid
 
+  // pricing
+  const BASE_PRICE = 85.5
+  const TOPPING_PRICE = 5
+  const toppingsCost = toppingsCount * TOPPING_PRICE
+  const total = BASE_PRICE + toppingsCost
+
   function handleToggleTopping(key, checked) {
     setMalzemeler((prev) => ({ ...prev, [key]: checked }))
   }
@@ -54,9 +64,10 @@ function Order({ onSubmitSuccess }) {
     setSubmitting(true)
 
     const secilenMalzemeler = Object.keys(malzemeler).filter((k) => malzemeler[k])
-    const payload = { isim, boyut, malzemeler: secilenMalzemeler, not }
+    const payload = { isim, boyut, hamur, malzemeler: secilenMalzemeler, not, total }
 
     try {
+      setSubmitError('')
       const res = await axios.post('https://reqres.in/api/pizza', payload)
       console.log('Sipariş cevabı:', res.data)
 
@@ -72,7 +83,7 @@ function Order({ onSubmitSuccess }) {
       setNot('')
     } catch (err) {
       console.error(err)
-      alert('Gönderim sırasında bir hata oluştu. Lütfen tekrar deneyin.')
+      setSubmitError('Gönderim sırasında bir hata oluştu. Lütfen tekrar deneyin.')
     } finally {
       setSubmitting(false)
     }
@@ -89,6 +100,8 @@ function Order({ onSubmitSuccess }) {
 
         <SizeSelector value={boyut} onChange={setBoyut} />
 
+        <DoughOptions value={hamur} onChange={setHamur} />
+
         <ToppingsSelector
           toppings={malzemeler}
           onToggle={handleToggleTopping}
@@ -99,10 +112,16 @@ function Order({ onSubmitSuccess }) {
 
         <NotesField value={not} onChange={setNot} />
 
-        <div className="size-field">
-          <button type="submit" disabled={!canSubmit || submitting}>
-            {submitting ? 'Gönderiliyor...' : 'SİPARİŞ VER'}
-          </button>
+        <div style={{ marginTop: 16 }}>
+          <SummaryBox
+            basePrice={BASE_PRICE}
+            toppingsCount={toppingsCount}
+            toppingPrice={TOPPING_PRICE}
+            total={total}
+            submitting={submitting}
+            canSubmit={canSubmit}
+            submitError={submitError}
+          />
         </div>
       </form>
     </main>
@@ -110,4 +129,3 @@ function Order({ onSubmitSuccess }) {
 }
 
 export default Order
-
