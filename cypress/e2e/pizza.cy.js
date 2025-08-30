@@ -115,4 +115,39 @@ describe('Pizza Order Form - IT2 extras', () => {
       expect(parseFloat(text)).to.eq(132.86)
     })
   })
+
+  it('Home CTA navigates to form', () => {
+    cy.visit('/#/')
+    cy.contains('a, button, [role="link"]', 'Siparis Olustur').click()
+    cy.url().should('include', '/#/form')
+  })
+
+  it('submit stays disabled until form valid', () => {
+    cy.visit('/#/form')
+
+    // initially disabled
+    cy.get('[data-testid="submit-button"]').should('be.disabled')
+
+    // name < 3 keeps disabled
+    cy.get('input[name="isim"]').type('Al')
+    cy.get('[data-testid="submit-button"]').should('be.disabled')
+
+    // name >= 3 but others missing
+    cy.get('input[name="isim"]').type('i') // now 'Ali'
+    cy.get('[data-testid="submit-button"]').should('be.disabled')
+
+    // select size only
+    cy.get('input[type="radio"][name="boyut"][value="Kucuk"]').check({ force: true })
+    cy.get('[data-testid="submit-button"]').should('be.disabled')
+
+    // select 3 toppings -> still disabled
+    ;['pepperoni','sosis','sucuk'].forEach((k) => {
+      cy.get(`input[type=\"checkbox\"][name=\"${k}\"]`).check({ force: true })
+    })
+    cy.get('[data-testid="submit-button"]').should('be.disabled')
+
+    // 4th topping -> enabled
+    cy.get('input[type="checkbox"][name="domates"]').check({ force: true })
+    cy.get('[data-testid="submit-button"]').should('not.be.disabled')
+  })
 })
