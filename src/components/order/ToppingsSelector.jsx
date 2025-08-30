@@ -1,3 +1,5 @@
+import './ToppingsSelector.css'
+
 export default function ToppingsSelector({
   toppings,
   onToggle,
@@ -26,26 +28,26 @@ export default function ToppingsSelector({
     <fieldset className="toppings-selector">
       <legend>Ek Malzemeler</legend>
 
-      {OPTIONS.map((opt) => (
-        <label
-          key={opt.key}
-          style={{ display: 'inline-block', minWidth: 160, margin: '6px 12px 6px 0' }}
-        >
-          <input
-            type="checkbox"
-            name={opt.key}
-            checked={!!toppings[opt.key]}
-            onChange={(e) => onToggle(opt.key, e.target.checked)}
-            disabled={!toppings[opt.key] && count >= max}
-          />
-          {opt.label}
-        </label>
-      ))}
+      {OPTIONS.map((opt) => {
+        const disabled = !toppings[opt.key] && count >= max
+        return (
+          <label key={opt.key} className={`checkbox ${disabled ? 'disabled' : ''}`}>
+            <input
+              type="checkbox"
+              name={opt.key}
+              checked={!!toppings[opt.key]}
+              onChange={(e) => onToggle(opt.key, e.target.checked)}
+              disabled={disabled}
+            />
+            <span className="checkmark" aria-hidden="true" />
+            <span className="label-text">{opt.label}</span>
+          </label>
+        )
+      })}
 
-      <div style={{ marginTop: 8, fontSize: 12, color: error ? 'crimson' : '#555' }}>
+      <div className="toppings-hint" aria-live="polite">
         Seçili: {count} (min {min}, max {max}) {error ? ' - ' + error : ''}
       </div>
     </fieldset>
   );
 }
-

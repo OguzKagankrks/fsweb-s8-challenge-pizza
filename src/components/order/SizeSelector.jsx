@@ -1,44 +1,46 @@
+import './SizeSelector.css'
+
 export default function SizeSelector({ value, onChange }) {
   return (
     <fieldset className="size-selector">
       <legend>Boyut Seç</legend>
 
-      <label htmlFor="size-kucuk">
+      <label className="radio">
         <input
-          id="size-kucuk"
           type="radio"
           name="boyut"
           value="Kucuk"
-          checked={value === "Kucuk"}
+          checked={value === 'Kucuk'}
           onChange={(e) => onChange(e.target.value)}
           required
         />
-        Küçük
+        <span className="radiomark" aria-hidden="true" />
+        <span className="label-text">Küçük</span>
       </label>
 
-      <label htmlFor="size-orta" style={{ marginLeft: '1rem' }}>
+      <label className="radio">
         <input
-          id="size-orta"
           type="radio"
           name="boyut"
           value="Orta"
-          checked={value === "Orta"}
+          checked={value === 'Orta'}
           onChange={(e) => onChange(e.target.value)}
         />
-        Orta
+        <span className="radiomark" aria-hidden="true" />
+        <span className="label-text">Orta</span>
       </label>
 
-      <label htmlFor="size-buyuk" style={{ marginLeft: '1rem' }}>
+      <label className="radio">
         <input
-          id="size-buyuk"
           type="radio"
           name="boyut"
           value="Buyuk"
-          checked={value === "Buyuk"}
+          checked={value === 'Buyuk'}
           onChange={(e) => onChange(e.target.value)}
         />
-        Büyük
+        <span className="radiomark" aria-hidden="true" />
+        <span className="label-text">Büyük</span>
       </label>
     </fieldset>
-  );
+  )
 }

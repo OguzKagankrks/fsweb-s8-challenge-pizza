@@ -1,0 +1,30 @@
+.size-selector { display: flex; gap: 16px; flex-wrap: wrap; }
+.size-selector .radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.size-selector .radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.size-selector .radiomark {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #cfd4da;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.size-selector .radio:hover .radiomark { border-color: #999; }
+.size-selector .radio input:focus-visible + .radiomark {
+  outline: 3px auto -webkit-focus-ring-color;
+}
+.size-selector .radio input:checked + .radiomark {
+  border-color: #FDC913;
+  background: radial-gradient(#000 0 40%, transparent 41% 100%);
+}
