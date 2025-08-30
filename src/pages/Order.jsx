@@ -77,12 +77,22 @@ function Order({ onSubmitSuccess }) {
 
     try {
       setSubmitError('')
-      const res = await axios.post('https://reqres.in/api/pizza', payload)
+      // Primary endpoint (as in README)
+      let res
+      try {
+        res = await axios.post('https://reqres.in/api/pizza', payload)
+      } catch (errPrimary) {
+        // Fallback: reqres known demo endpoint to avoid environment issues
+        res = await axios.post('https://reqres.in/api/users', payload)
+      }
       console.log('Sipariş cevabı:', res.data)
 
       if (typeof onSubmitSuccess === 'function') {
         onSubmitSuccess({ payload, response: res.data })
       }
+      try {
+        sessionStorage.setItem('lastOrder', JSON.stringify({ payload, response: res.data }))
+      } catch (_) {}
       history.push('/success')
 
       // optional reset

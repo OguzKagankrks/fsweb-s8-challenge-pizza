@@ -1,17 +1,22 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import './Success.css'
 
 export default function Success({ order }) {
   const history = useHistory()
-  const payload = order?.payload
-  const response = order?.response
+  // Read from props or fallback to sessionStorage to survive refresh/direct access
+  const fromStorage = useMemo(() => {
+    try { return JSON.parse(sessionStorage.getItem('lastOrder') || 'null') } catch { return null }
+  }, [])
+  const data = order || fromStorage
+  const payload = data?.payload
+  const response = data?.response
 
   useEffect(() => {
-    if (!order) {
+    if (!data) {
       history.replace('/')
     }
-  }, [order, history])
+  }, [data, history])
 
   return (
     <main className="success-page">
