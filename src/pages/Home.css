@@ -2,14 +2,22 @@
 
 /* HERO BANNER */
 .hero-banner{background:#CE2829; color:#fff; position:relative;}
-.hero-banner .hero-inner{padding:40px 0 120px; text-align:center; position:relative; overflow:hidden}
+.hero-banner .hero-inner{padding:52px 0 160px; text-align:center; position:relative; overflow:hidden}
+.hero-banner::before{
+  content:""; position:absolute; inset:0; pointer-events:none; opacity:.15;
+  background:
+    radial-gradient(18px 18px at 15% 25%, #fff 2px, transparent 3px) repeat,
+    radial-gradient(18px 18px at 85% 35%, #fff 2px, transparent 3px) repeat,
+    radial-gradient(18px 18px at 30% 70%, #fff 2px, transparent 3px) repeat;
+  background-size: 140px 140px, 180px 180px, 200px 200px;
+}
 .site-brand{font-family:'Satisfy', cursive; font-size:44px; margin:0}
 .hero-sub{font-family:'Satisfy', cursive; color:#ffe3a0; margin:8px 0 0}
-.hero-title{font-family:'Quattrocento', serif; font-weight:700; font-size:40px; letter-spacing:.4px; margin:8px 0 16px}
+.hero-title{font-family:'Quattrocento', serif; font-weight:700; font-size:42px; line-height:1.1; letter-spacing:.4px; margin:10px 0 18px}
 .btn-primary{display:inline-block; background:#FDC913; color:#000; padding:10px 20px; border-radius:10px; font-weight:800}
-.hero-pizza{position:absolute; left:50%; transform:translateX(-50%); bottom:-60px; width:560px; max-width:90%;}
-.categories-bar{background:#fff; border-radius:14px; box-shadow:0 10px 30px rgba(0,0,0,.08); margin:-40px auto 32px; width:min(980px, 100% - 32px)}
-.categories-bar ul{display:flex; gap:24px; padding:12px 16px; margin:0; overflow:auto; list-style:none; align-items:center; justify-content:center}
+.hero-pizza{position:absolute; left:50%; transform:translateX(-50%); bottom:-100px; width:740px; max-width:95%;}
+.categories-bar{background:#fff; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.12); margin:-60px auto 40px; width:min(1000px, 100% - 32px); border:1px solid #f0f0f0}
+.categories-bar ul{display:flex; gap:28px; padding:14px 18px; margin:0; overflow:auto; list-style:none; align-items:center; justify-content:center}
 .categories-bar li{display:flex; align-items:center; gap:10px; white-space:nowrap; color:#333}
 .categories-bar img{height:22px}
 

@@ -1,4 +1,4 @@
-import './SizeSelector.css'
+﻿import "./SizeSelector.css"
 
 export default function SizeSelector({ value, onChange }) {
   return (
@@ -15,7 +15,7 @@ export default function SizeSelector({ value, onChange }) {
           required
         />
         <span className="radiomark" aria-hidden="true" />
-        <span className="label-text">Küçük</span>
+        <span className="label-text">Kucuk</span>
       </label>
 
       <label className="radio">
@@ -39,7 +39,7 @@ export default function SizeSelector({ value, onChange }) {
           onChange={(e) => onChange(e.target.value)}
         />
         <span className="radiomark" aria-hidden="true" />
-        <span className="label-text">Büyük</span>
+        <span className="label-text">Buyuk</span>
       </label>
     </fieldset>
   )
