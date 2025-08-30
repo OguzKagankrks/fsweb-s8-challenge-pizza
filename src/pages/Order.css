@@ -1,5 +1,13 @@
 .order-page { padding: 16px; }
-.order-page .page-title { font-size: 28px; margin: 0 0 16px; }
+.order-page .page-title {
+  font-size: 30px;
+  margin: 0 0 20px;
+  font-family: 'Quattrocento', Georgia, serif;
+  font-weight: 700;
+  letter-spacing: .2px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
 
 .form-grid {
   display: grid;
@@ -8,7 +16,7 @@
   align-items: start;
 }
 
-.form-area .section { margin: 16px 0; border: none; padding: 0; }
+.form-area .section { margin: 20px 0; border: none; padding: 12px 0 0; }
 .form-area .name-field { margin-bottom: 12px; text-align: left; }
 .form-area label { display: block; margin-bottom: 6px; font-weight: 600; }
 .form-area input[type="text"],
@@ -48,10 +56,22 @@
 
 /* Fieldset legends */
 .form-area fieldset > legend {
-  font-weight: 700;
-  font-size: 14px;
-  color: #222;
+  font-weight: 800;
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+}
+
+.form-area .name-field label,
+.form-area .notes-field label {
+  font-weight: 800;
+  font-size: 12px;
+  color: #6b7280;
   margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: .8px;
 }
 
 /* Inline error */
