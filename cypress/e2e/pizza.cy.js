@@ -91,4 +91,28 @@ describe('Pizza Order Form - IT2 extras', () => {
     cy.contains('Siparişiniz Alındı').should('exist')
     cy.contains('Ayşe Başarılı').should('exist')
   })
+
+  it('pricing reflects size and dough multipliers', () => {
+    cy.visit('/#/form')
+    cy.get('input[name="isim"]').type('Fiyat Test')
+
+    // Kucuk + Ince + 4 topping: 85.5*1*1 + 4*5 = 105.5
+    cy.get('input[type="radio"][name="boyut"][value="Kucuk"]').check({ force: true })
+    cy.get('select[name="hamur"]').select('Ince')
+    ;['pepperoni','sosis','sucuk','domates'].forEach((k) => {
+      cy.get(`input[type="checkbox"][name="${k}"]`).check({ force: true })
+    })
+    cy.get('[data-testid="total-amount"]').should(($el) => {
+      const text = $el.text().replace('₺','').trim()
+      expect(parseFloat(text)).to.eq(105.5)
+    })
+
+    // Orta + Kalin + 4 topping: 85.5*1.2*1.1 + 20 = 132.86
+    cy.get('input[type="radio"][name="boyut"][value="Orta"]').check({ force: true })
+    cy.get('select[name="hamur"]').select('Kalin')
+    cy.get('[data-testid="total-amount"]').should(($el) => {
+      const text = $el.text().replace('₺','').trim()
+      expect(parseFloat(text)).to.eq(132.86)
+    })
+  })
 })

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useHistory, Link } from 'react-router-dom'
+import './Success.css'
 
 export default function Success({ order }) {
   const history = useHistory()
@@ -13,46 +14,34 @@ export default function Success({ order }) {
   }, [order, history])
 
   return (
-    <div className="success-message" style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>Tebrikler!</h1>
-      <h2>Siparişiniz Alındı</h2>
+    <main className="success-page">
+      <section className="success-card">
+        <h1 className="title">Tebrikler!</h1>
+        <p className="subtitle">Siparisiniz alindi</p>
 
-      {payload ? (
-        <div style={{ marginTop: 24 }}>
-          <div><strong>İsim:</strong> {payload.isim}</div>
-          <div><strong>Boyut:</strong> {payload.boyut}</div>
-          <div>
-            <strong>Malzemeler:</strong> {payload.malzemeler.join(', ')}
-          </div>
-          {payload.not && (
-            <div><strong>Not:</strong> {payload.not}</div>
-          )}
-          {typeof payload.total === 'number' && (
-            <div style={{ marginTop: 8 }}>
-              <strong>Toplam:</strong> {payload.total.toFixed(2)}₺
+        {payload ? (
+          <div className="summary">
+            <div className="row"><span>Isim</span><strong>{payload.isim}</strong></div>
+            <div className="row"><span>Boyut</span><strong>{payload.boyut}</strong></div>
+            <div className="row"><span>Malzemeler</span><strong>{payload.malzemeler.join(', ')}</strong></div>
+            {payload.not && (
+              <div className="row"><span>Not</span><strong>{payload.not}</strong></div>
+            )}
+            {typeof payload.total === 'number' && (
+              <div className="row total"><span>Toplam</span><strong>{payload.total.toFixed(2)}₺</strong></div>
+            )}
+            {response && (
+              <div className="meta">id: {response.id} — {response.createdAt}</div>
+            )}
+            <div className="actions">
+              <Link className="cta" to="/form">Yeni Siparis Ver</Link>
             </div>
-          )}
-          {response && (
-            <div style={{ marginTop: 12, fontSize: 12, color: '#555' }}>
-              id: {response.id} — {response.createdAt}
-            </div>
-          )}
-          <div style={{ marginTop: 24 }}>
-            <Link to="/form" style={{
-              display: 'inline-block',
-              background: '#FDC913',
-              color: '#000',
-              padding: '10px 16px',
-              borderRadius: 8,
-              fontWeight: 700,
-            }}>
-              Yeni Sipariş Ver
-            </Link>
           </div>
-        </div>
-      ) : (
-        <div style={{ marginTop: 16 }}>Yönlendiriliyor…</div>
-      )}
-    </div>
+        ) : (
+          <div className="loading">Yonlendiriliyor...</div>
+        )}
+      </section>
+    </main>
   )
 }
+
