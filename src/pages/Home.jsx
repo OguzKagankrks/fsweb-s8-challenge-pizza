@@ -7,8 +7,8 @@ function Home() {
       <header className='hero'>
         <div className='hero__content'>
           <h1 className='brand'>Teknolojik Yemekler</h1>
-          <p className='tagline'>Aï¿½ mï¿½sï¿½n? En hï¿½zlï¿½sï¿½ burada.</p>
-          <a className='cta' href='#!/form'>Sipariï¿½ Oluï¿½tur</a>
+          <p className='tagline'>Ac misin? En hizlisi burada.</p>
+          <Link className='cta' to='/form'>Sipariþ Oluþtur</Link>
         </div>
         <div className='hero__image' aria-hidden>
           <img src='/images/iteration-2-images/pictures/food-1.png' alt='Lezzetli pizza' />
@@ -17,19 +17,19 @@ function Home() {
 
       <section className='features'>
         <article className='card'>
-          <img src='/images/iteration-2-images/cta/kart-1.png' alt='Hï¿½zlï¿½ teslimat' />
-          <h3>Hï¿½zlï¿½ Teslimat</h3>
-          <p>Sipariï¿½lerin rekor sï¿½rede kapï¿½nda.</p>
+          <img src='/images/iteration-2-images/cta/kart-1.png' alt='Hizli teslimat' />
+          <h3>Hýzlý Teslimat</h3>
+          <p>Sipariþlerin rekor sürede kapýnda.</p>
         </article>
         <article className='card'>
           <img src='/images/iteration-2-images/cta/kart-2.png' alt='Taptaze malzemeler' />
           <h3>Taptaze</h3>
-          <p>Her gï¿½n taze malzemelerle hazï¿½rlanï¿½r.</p>
+          <p>Her gün taze malzemelerle hazýrlanýr.</p>
         </article>
         <article className='card'>
-          <img src='/images/iteration-2-images/cta/kart-3.png' alt='Zengin seï¿½enek' />
-          <h3>Bol Seï¿½enek</h3>
-          <p>Her damak tadï¿½na uygun kombinler.</p>
+          <img src='/images/iteration-2-images/cta/kart-3.png' alt='Zengin seçenek' />
+          <h3>Bol Seçenek</h3>
+          <p>Her damak tadýna uygun kombinler.</p>
         </article>
       </section>
 
